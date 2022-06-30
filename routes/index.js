@@ -56,7 +56,7 @@ router.post('/invoice', function (req, res, next) {
 
 router.post('/delivery', function (req, res, next) {
   const model = {
-    message: "Thabks for your payment"
+    message: "Thanks for your payment"
   }
   res.json(model)
 });
