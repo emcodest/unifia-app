@@ -46,6 +46,11 @@ router.post('/remote-input-2', function (req, res, next) {
     response_body: [
       {
 
+        "data_key": "amount", "data_name": "Amount to pay", "data_type": "TEXT_BOX", "data_value": "0.00"
+
+      },
+      {
+
         "data_key": "phone", "data_name": "phone", "data_type": "TEXT_BOX", "data_value": "080-----2222"
 
       },
