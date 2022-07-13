@@ -79,7 +79,7 @@ router.post('/remote-invoice', function (req, res, next) {
   const model = {
     step: 3,
     type: 'invoice',
-    status: 'success or error',
+    status: 'success',
     message: 'Completed',
     amount: '100'
   }
