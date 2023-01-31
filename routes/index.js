@@ -66,26 +66,49 @@ router.post('/remote-input-2', function (req, res, next) {
 
   res.json(model)
 });
+
 /**
  *  INVOICE ENDPOINT
  */
 
 router.post('/remote-invoice', function (req, res, next) {
-//: TODO:
-  //: BUSINESS LOGIC
-  //: TODO: CONFIRM invoice
- // Verify Invoice Endpoint - Invoice Confirmation GET request
-//https://unifia.herokuapp.com/invoice-confirm?no=1234
-  const model = {
-    step: 3,
-    type: 'invoice',
-    status: 'success',
-    message: 'Completed',
-    amount: '100'
+
+  //: YOUR BUSINESS LOGIC  
+  let amount_to_charge = 100
+
+  //: END YOUR BUSINESS LOGIC
+
+  let app_status = "success" // success or error
+
+  //: CONFIRM invoice to make sure its from Unifia and its not manipulated
+
+  // Verify Invoice Endpoint - Invoice Confirmation GET request
+  //https://unifia.herokuapp.com/invoice-confirm?no=1234
+  //Note: the invoice is valid at only one call
+
+  //: END CONFIRM INVOICE
+
+
+  //: RESPONSE TO UNIFIA
+
+
+  //: END RESPONSE TO UNIFIA
+
+
+  //: amount to charge customers
+  const response = {
+
+    status: app_status,
+
+    message: 'Any message you wish to be display to users',
+
+    amount: amount_to_charge
   }
 
-  res.json(model)
+  res.json(response)
+
 });
+
 /**
  *  DELIVERY ENDPOINT
  */
