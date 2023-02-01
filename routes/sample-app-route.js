@@ -1,12 +1,6 @@
-
 // SAMPLE TEST APP (AIRTIME) FOR UNIFIA
 router.post('/test-app/remote-input-1', async function (req, res) {
 
-  //: SAMPLE REQUEST Payload FROM UNIFIA  (req.body)
-  //{"app_config_step":"eyJzdGVwIjoiMSIsImRlbGl2ZXJ5IjpmYWxzZSwiaW52b2ljZSI6ZmFsc2UsIm5hbWUiOiJHZXQgUGhvbmUgYW5kIEVtYWlsIiwiYWN0aW9uX2J1dHRvbiI6IkJ1eSBBaXJ0aW1lIiwicmVtb3RlX2VuZHBvaW50IjoiaHR0cHM6Ly91bmlmaWEuaGVyb2t1YXBwLmNvbS90ZXN0LWFwcC9yZW1vdGUtaW5wdXQtMSIsInJlc3BvbnNlX2JvZHkiOlt7ImRhdGFfa2V5IjoicGhvbmUiLCJkYXRhX25hbWUiOiJwaG9uZSIsImRhdGFfdHlwZSI6IlRFWFRfSU5QVVQiLCJkYXRhX3ZhbHVlIjoiIn0seyJkYXRhX2tleSI6ImFtb3VudF90b19idXkiLCJkYXRhX25hbWUiOiJFbnRlciBBaXJ0aW1lIGFtb3VudCB5b3Ugd2FudCB0byBidXkiLCJkYXRhX3R5cGUiOiJURVhUX0lOUFVUIn1dfQ==","invoice_no":"88"}
-
-  //: use this Unifia API endpoint to get more details about the transaction
-  //Endpoint   --->  POST {invoice_no: 88} to   https://unifia.herokuapp.com/api/v1/no-auth/Delivery/InvoiceDetails to get more details
 
   await hl.genInsert({step: "One", log: JSON.stringify(req.body)}, 'sample_app_log')
   
@@ -36,10 +30,7 @@ router.post('/test-app/remote-input-1', async function (req, res) {
 
 })
 router.post('/test-app/remote-input-2', async function (req, res) {
-  // {"app_config_step":"eyJzdGVwIjoiMiIsImRlbGl2ZXJ5IjpmYWxzZSwiaW52b2ljZSI6ZmFsc2UsIm5hbWUiOiJDb25maXJtIHZhbGlkIFBob25lIiwiYWN0aW9uX2J1dHRvbiI6IkNvbmZpcm0iLCJyZW1vdGVfZW5kcG9pbnQiOiJodHRwczovL3VuaWZpYS5oZXJva3VhcHAuY29tL3Rlc3QtYXBwL3JlbW90ZS1pbnB1dC0yIiwicmVzcG9uc2VfYm9keSI6W3siZGF0YV9rZXkiOiJwaG9uZSIsImRhdGFfbmFtZSI6InBob25lIiwiZGF0YV90eXBlIjoiVEVYVF9CT1giLCJkYXRhX3ZhbHVlIjoiMDgwLS0tLS0yMjIyIn0seyJkYXRhX2tleSI6ImVtYWlsX2FkZHJlc3MiLCJkYXRhX25hbWUiOiJFbnRlciB5b3VyIGVtYWlsIGFkZHJlc3MiLCJkYXRhX3R5cGUiOiJURVhUX0JPWCIsImRhdGFfdmFsdWUiOiJ4eHh4QGdtYWlsLmNvbSJ9XX0=","invoice_no":"97"}
-
-  //: use this Unifia API endpoint to get more details about the transaction
-  //Endpoint   --->  POST {invoice_no: 97} to   https://unifia.herokuapp.com/api/v1/no-auth/Delivery/InvoiceDetails to get more details
+  
 
   await hl.genInsert({step: "Two", log: JSON.stringify(req.body)}, 'sample_app_log')
   const response = {
@@ -67,11 +58,9 @@ router.post('/test-app/remote-input-2', async function (req, res) {
 })
 router.post('/test-app/remote-invoice', async function (req, res) {
 
-  //Sample req.body Unifia will post
-  //{"invoice_input":{"invoice_pricing_input":{"phone":"","amount_to_buy":""}},"invoice_no":"97"}
+  //Sample req.body Unifia will post when invoice is generated
+  //{"phone":"xxxxxx","amount_to_buy":"xxxxx"}   this is what you set earlier in Unifia as invoice_pricing_input. phone and amount_to_buy are dynamic variables. It can be anything you set
 
-  //: use this Unifia API endpoint to get more details about the transaction
-  //Endpoint   --->  POST {invoice_no: 97} to   https://unifia.herokuapp.com/api/v1/no-auth/Delivery/InvoiceDetails to get more details
   await hl.genInsert({step: "Three (Invoice)", log: JSON.stringify(req.body)}, 'sample_app_log')
  
   //: YOUR BUSINESS LOGIC  
@@ -113,7 +102,7 @@ router.post('/test-app/remote-invoice', async function (req, res) {
 router.post('/test-app/deliver-service', async function (req, res) {
 
   //: sample reuest from Unifia
-  // {"app_config_step":"eyJzdGVwIjoiNCIsImRlbGl2ZXJ5Ijp0cnVlLCJpbnZvaWNlIjpmYWxzZSwibmFtZSI6IkRlbGl2ZXIgU2VydmljZSIsImFjdGlvbl9idXR0b24iOiJQYXkgTm93IiwicmVtb3RlX2VuZHBvaW50IjoiaHR0cHM6Ly91bmlmaWEuaGVyb2t1YXBwLmNvbS90ZXN0LWFwcC9kZWxpdmVyLXNlcnZpY2UiLCJyZXNwb25zZV9ib2R5IjpmYWxzZX0=","invoice_no":"97"}
+  // {"delivery":"true","UNIFIA_INVOICE_CONFIRM_GET_URL":"https://unifia.herokuapp.com/invoice-confirm?no=99","invoice_no":"99","invoice_data":"{\"request_body\":{\"keys\":[\"phone\",\"amount_to_buy\"],\"test_values\":[\"080747474\",\"100\"]},\"invoice_response_body\":{\"amount\":\"\",\"message\":\"\",\"meta_data\":{}},\"app_conf_step_to_invoice\":2,\"remote_invoice_endpoint\":\"https://unifia.herokuapp.com/test-app/remote-invoice\",\"app_deploy_id\":\"116\"}","payment_reference":"P9494180","amount":"150","buyer_balance":"4100"}
 
   //: use this Unifia API endpoint to get more details about the transaction
   //Endpoint   --->  POST {invoice_no: 97} to   https://unifia.herokuapp.com/api/v1/no-auth/Delivery/InvoiceDetails to get more details
