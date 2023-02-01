@@ -72,6 +72,8 @@ router.post('/remote-input-2', function (req, res, next) {
  */
 
 router.post('/remote-invoice', function (req, res, next) {
+  
+  const {phone, amount} = request.body
 
   //: YOUR BUSINESS LOGIC  
   let amount_to_charge = 100
