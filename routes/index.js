@@ -13,7 +13,7 @@ router.get('/', function (req, res, next) {
 //: Example:Collect user phone number and email address to send airtime to phone
 //: step one
 router.post('/remote-input-1', function (req, res, next) {
-  const model = {
+  const response = {
     step: 1,
     type: 'input',
     status: 'success or error',
@@ -33,12 +33,12 @@ router.post('/remote-input-1', function (req, res, next) {
 
     ]
   }
-  res.json(model)
+  res.json(response)
 });
 //: step two
 //: confirm the phone number and email the user selected
 router.post('/remote-input-2', function (req, res, next) {
-  const model = {
+  const response = {
     step: 2,
     type: 'input',
     status: 'success or error',
@@ -64,7 +64,7 @@ router.post('/remote-input-2', function (req, res, next) {
     ]
   }
 
-  res.json(model)
+  res.json(response)
 });
 
 /**
@@ -123,13 +123,13 @@ router.post('/remote-delivery', function (req, res, next) {
   // Service Purchase Confirmation GET request
 //https://unifia.herokuapp.com/confirm-purchase?invoice_no=1234
 
-  const model = {
+  const response = {
     step: 4,
     type: 'delivery',
     status: 'success or error',
     message: 'Delivered successfully'
   }
-  res.json(model)
+  res.json(response)
 });
 
 module.exports = router;
