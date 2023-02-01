@@ -1,0 +1,74 @@
+{
+    "user_id": 73,
+    "api_key": "7af77500a734826a2135",
+    "api_secret": "VQM2U4Q-PDSE6CQ-XP5FXBY-KNAIGSY8175",
+    "app_deploy_id": "116",
+    "ipn_secret": "mxxx-xxxx-xxx",
+    "api_type": "REST",
+    "content_type": "json",
+    "app_runner_config": {
+        "app": [
+            {
+                "step": "1",
+                "delivery": false,
+                "invoice": false,
+                "name": "Get Phone and Email",
+                "action_button": "Buy Airtime",
+                "remote_endpoint": "https://unifia.herokuapp.com/test-app/remote-input-1",
+                "response_body": [
+                    {
+                        "data_key": "phone",
+                        "data_name": "phone",
+                        "data_type": "TEXT_INPUT",
+                        "data_value": ""
+                    },
+                    {
+                        "data_key": "amount_to_buy",
+                        "data_name": "Enter Airtime amount you want to buy",
+                        "data_type": "TEXT_INPUT"
+                    }
+                ]
+            },
+            {
+                "step": "2",
+                "delivery": false,
+                "invoice": false,
+                "name": "Confirm valid Phone",
+                "action_button": "Confirm",
+                "remote_endpoint": "https://unifia.herokuapp.com/test-app/remote-input-2",
+                "response_body": [
+                    {
+                        "data_key": "phone",
+                        "data_name": "phone",
+                        "data_type": "TEXT_BOX",
+                        "data_value": "080-----2222"
+                    },
+                    {
+                        "data_key": "email_address",
+                        "data_name": "Enter your email address",
+                        "data_type": "TEXT_BOX",
+                        "data_value": "xxxx@gmail.com"
+                    }
+                ]
+            },
+            {
+                "step": "3",
+                "delivery": false,
+                "invoice": true,
+                "name": "Fetch Invoice",
+                "action_button": "Confirm Amount",
+                "remote_endpoint": false,
+                "response_body": false
+            },
+            {
+                "step": "4",
+                "delivery": true,
+                "invoice": false,
+                "name": "Deliver Service",
+                "action_button": "Pay Now",
+                "remote_endpoint": "https://unifia.herokuapp.com/test-app/deliver-service",
+                "response_body": false
+            }
+        ]
+    }
+}
