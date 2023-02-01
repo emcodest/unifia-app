@@ -1,0 +1,19 @@
+{
+			  
+	"user_id": 73,
+		"api_key": "7af77500a734826a2135",
+		"api_secret": "VQM2U4Q-PDSE6CQ-XP5FXBY-KNAIGSY8175",
+	  "app_deploy_id": "116",
+	  "remote_invoice_endpoint": "https://unifia.herokuapp.com/test-app/remote-invoice",
+	   "request_body": {
+			  "keys": [
+					"phone", "amount_to_buy"
+				],
+			 "test_values": ["080747474", "100"]
+		 },
+	   "invoice_response_body": {
+			 "amount": "", "message": "", "meta_data": {}
+		 },
+	  "app_conf_step_to_invoice": 2
+	
+}
